@@ -10,7 +10,7 @@ module NumericExtensions
     import Base: start, next, done, getindex, setindex!
 
     # common operations
-    import Base: show, add!, copy, similar, pointer, parent, diagm
+    import Base: show, copy, similar, pointer, parent, diagm
 
     # higher-level map & reduction functions to be extended
     import Base: map, map!, reduce, reducedim, mapreduce, foldl, foldr
@@ -22,10 +22,10 @@ module NumericExtensions
     import Base: sum, sum!, prod, prod!, maximum, maximum!, minimum, minimum!, dot, norm
 
     # scan functions to be extended
-    import Base: cumsum, cummax, cummin, cumprod
+    import Base: cumsum, cumsum!, cummax, cummin, cumprod
 
     # statistics
-    import Base: mean, var, varm, std, stdm
+    import Base: mean, mean!, var, varm, std, stdm
 
     # from ArrayViews
     import ArrayViews: view, ellipview
@@ -33,7 +33,7 @@ module NumericExtensions
     # from NumericFuns
     import NumericFuns: evaluate, result_type, logsumexp
 
-    export 
+    export
         # reexport views
         view, ellipview,
 
@@ -41,7 +41,7 @@ module NumericExtensions
         fptype, arithtype, evaluate, result_type,
 
         # re-export mathfuns
-        sqr, rcp, rsqrt, rcbrt, xlogx, xlogy, 
+        sqr, rcp, rsqrt, rcbrt, xlogx, xlogy,
         sigmoid, logit, softplus, invsoftplus, logsumexp,
 
         # shapes
@@ -51,15 +51,15 @@ module NumericExtensions
         view, unsafe_view,
 
         # mathfuns
-         
+
         logit, xlogx, xlogy, logistic, invlogistic, softplus, invsoftplus,
 
         # functors
         Functor, @functor1, @functor2, evaluate, fptype,
 
         # map
-        map, map!, map1!, mapdiff, mapdiff!, 
-        add!, subtract!, multiply!, divide!, negate!, rcp!, 
+        map, map!, map1!, mapdiff, mapdiff!,
+        add!, subtract!, multiply!, divide!, negate!, rcp!,
         sqrt!, abs!, sqr!, abs2!, pow!, exp!, log!,
         floor!, ceil!, round!, trunc!,
         absdiff, absdiff!, sqrdiff, sqrdiff!, fma, fma!,
@@ -72,15 +72,15 @@ module NumericExtensions
         add_diag!, add_diag, set_diag!, set_diag,
 
         # reduce
-        mapreduce_fdiff, sumfdiff, maxfdiff, minfdiff, meanfdiff, 
+        mapreduce_fdiff, sumfdiff, maxfdiff, minfdiff, meanfdiff,
         sumabs, maxabs, minabs, meanabs, sumsq, meansq,
-        sumabsdiff, maxabsdiff, minabsdiff, meanabsdiff,        
+        sumabsdiff, maxabsdiff, minabsdiff, meanabsdiff,
         sumsqdiff, meansqdiff, sumxlogx, sumxlogy, entropy,
 
         foldl_fdiff, foldr_fdiff,
 
         # reducedim
-        reducedim!, mapreducedim, mapreducedim!, mapreducedim_fdiff, mapreducedim_fdiff!, 
+        reducedim!, mapreducedim, mapreducedim!, mapreducedim_fdiff, mapreducedim_fdiff!,
         foldl!, foldr!, sum!, maximum!, minimum!, mean!, dot!,
 
         sumfdiff!, maxfdiff!, minfdiff!, meanfdiff!,
@@ -92,11 +92,11 @@ module NumericExtensions
         vnorm, vnorm!, vnormdiff, vnormdiff!, normalize, normalize!,
 
         # scan
-        scan, scan!, mapscan, mapscan!, 
+        scan, scan!, mapscan, mapscan!,
         cumsum!, cummax!, cummin!,
 
         # statistics
-        var!, varm!, std!, stdm!, 
+        var!, varm!, std!, stdm!,
         logsumexp, logsumexp!, softmax, softmax!,
 
         # weightsum
@@ -119,7 +119,7 @@ module NumericExtensions
 
     include("mapkernels.jl")
     include("map.jl")
-    
+
     include("vbroadcast.jl")
     include("diagop.jl")
     include("utils.jl")
